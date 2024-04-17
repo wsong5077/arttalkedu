@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity, ScrollView, Modal } from 'react-native';
 
-const LearningPage2 = () => {
+const LearningPage2 = ({ navigation, route }) => {
+  console.log("LearningPage2 is now rendering");
+  console.log("Params:", route.params);
   const [modalVisible, setModalVisible] = useState(false);
   const [imageUri, setImageUri] = useState('https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Leonardo_da_Vinci_%28attrib%29-_la_Belle_Ferroniere.jpg/1200px-Leonardo_da_Vinci_%28attrib%29-_la_Belle_Ferroniere.jpg');
   const [content, setContent] = useState({

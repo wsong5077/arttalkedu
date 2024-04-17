@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity, ScrollView, Modal } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+
 
 const LearningPage = () => {
+  const navigation = useNavigation();  // Get the navigation prop using the hook
   const [modalVisible, setModalVisible] = useState(false);
   const [imageUri, setImageUri] = useState('https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/1200px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg');
   const [content, setContent] = useState({
@@ -25,7 +28,9 @@ const LearningPage = () => {
       ]
     });
   };
-  
+  const handleNextPress = () => {
+    navigation.navigate('LearningPage2');
+  };
     
 
   return (
@@ -80,7 +85,7 @@ const LearningPage = () => {
         </Modal>
 
 
-      <TouchableOpacity style={styles.nextSectionButton}>
+      <TouchableOpacity style={styles.nextSectionButton} onPress={handleNextPress}>
         <Text>Next Section</Text>
       </TouchableOpacity>
     </View>
