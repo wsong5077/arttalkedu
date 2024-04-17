@@ -1,18 +1,21 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
+import { Modal, View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
 
 const TestPage = ({navigation}) => {
   const [selectedPainting, setSelectedPainting] = useState(null);
   const [showHint, setShowHint] = useState(false);
   const [hasChosen, setHasChosen] = useState(false);
   const [score, setScore] = useState(0);
+  const [confirming, setConfirming] = useState(false); // State to manage the confirmation step
+
 
   const correctPainting = 'painting1'; // Identifier for the correct painting
   
   const handleSelectPainting = (painting) => {
     if (!hasChosen) {
       setSelectedPainting(painting);
-      setHasChosen(true); // The user has now made their choice
+      setConfirming(true); 
+      //setHasChosen(true); // The user has now made their choice
 
       // If it's the correct painting, award points
       if (painting === correctPainting) {
@@ -22,6 +25,21 @@ const TestPage = ({navigation}) => {
     else {
       setSelectedPainting(painting);
     }
+  };
+
+  const handleConfirmSelection = () => {
+    setHasChosen(true); // The user has now made their choice and confirmed it
+    setConfirming(false); // Hide confirmation box
+    
+    // If it's the correct painting, award points
+    if (selectedPainting === correctPainting) {
+      setScore(1); // Assuming each correct answer is worth 1 point
+    }
+  };
+
+  const handleCancelSelection = () => {
+    setSelectedPainting(null);
+    setConfirming(false);
   };
 
   const handleShowHint = () => {
@@ -35,7 +53,10 @@ const TestPage = ({navigation}) => {
 
   const getBorderStyle = (painting) => {
     if (selectedPainting === painting) {
-      return selectedPainting === correctPainting ? styles.correct : styles.incorrect;
+      if (hasChosen) {
+        return selectedPainting === correctPainting ? styles.correct : styles.incorrect;
+      }
+      return styles.selected; // Before confirmation, show a grey box
     }
   };
 
@@ -60,11 +81,11 @@ const TestPage = ({navigation}) => {
         </TouchableOpacity>
       </View>
 
-      {isCorrectAnswerSelected && (
+      {
         <TouchableOpacity style={styles.answerButton} onPress={() => navigation.navigate('Answer', {score})}>
           <Text style={styles.answerButtonText}>Answer</Text>
         </TouchableOpacity>
-      )}
+      }
 
       <TouchableOpacity onPress={handleShowHint} style={styles.hintButton}>
         <Text>Hint</Text>
@@ -76,6 +97,35 @@ const TestPage = ({navigation}) => {
             Sfumato is characterized by soft, subtle transitions between colors, without harsh lines, giving a more realistic, three-dimensional appearance.
           </Text>
         </View>
+      )}
+
+{confirming && (
+        <Modal
+          animationType="fade"
+          transparent={true}
+          visible={confirming}
+          onRequestClose={() => setConfirming(false)}
+        >
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+              <Text style={styles.modalText}>Confirm your selection</Text>
+              <View style={styles.confirmationButtons}>
+                <TouchableOpacity
+                  style={styles.confirmButton}
+                  onPress={handleConfirmSelection}
+                >
+                  <Text>Confirm</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={styles.cancelButton}
+                  onPress={handleCancelSelection}
+                >
+                  <Text>Cancel</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </View>
+        </Modal>
       )}
     </View>
   );
@@ -140,6 +190,59 @@ const styles = StyleSheet.create({
     color: 'white', // Text color that contrasts with the button color
     fontSize: 18,
     textAlign: 'center',
+  },
+  selected: {
+    borderWidth: 5,
+    borderColor: 'grey',
+  },
+  correct: {
+    borderWidth: 5,
+    borderColor: 'green',
+  },
+  incorrect: {
+    borderWidth: 5,
+    borderColor: 'red',
+  },
+  // Styles for the confirmation modal
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)', // semi-transparent background
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: 'center',
+    fontSize: 18,
+  },
+  confirmationButtons: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  confirmButton: {
+    backgroundColor: '#E8E8E8',
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+    marginHorizontal: 10,
+  },
+  cancelButton: {
+    backgroundColor: '#ffcccb', // light red color for cancel button
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+    marginHorizontal: 10,
   },
 });
 
