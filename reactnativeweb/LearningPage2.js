@@ -39,7 +39,7 @@ const LearningPage2 = ({ navigation, route }) => {
             style={styles.image}
           />
           <TouchableOpacity
-            style={[styles.hotspot, { right: '60%', top: '20%' }]}
+            style={[styles.hotspot, { right: '50%', top: '50%' }]}
             onPress={() => setModalVisible(true)}
           />
         </View>

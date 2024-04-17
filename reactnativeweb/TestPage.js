@@ -64,6 +64,11 @@ const TestPage = ({navigation}) => {
 
   return (
     <View style={styles.container}>
+      <View style={styles.scoreContainer}>
+        <Text style={styles.scoreText}>Score: {score}</Text>
+      </View>
+
+      
       <Text style={styles.question}>
         Which painting contains the technique of Sfumato? (Click on the painting to choose)
       </Text>
@@ -86,10 +91,11 @@ const TestPage = ({navigation}) => {
           <Text style={styles.answerButtonText}>Answer</Text>
         </TouchableOpacity>
       }
-
+      
       <TouchableOpacity onPress={handleShowHint} style={styles.hintButton}>
         <Text>Hint</Text>
       </TouchableOpacity>
+
 
       {showHint && (
         <View style={styles.hintBox}>
@@ -243,6 +249,19 @@ const styles = StyleSheet.create({
     padding: 10,
     elevation: 2,
     marginHorizontal: 10,
+  },
+  scoreContainer: {
+    position: 'absolute',
+    top: 10,
+    left: 10,
+    backgroundColor: 'white',
+    padding: 8,
+    borderRadius: 5,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
 });
 
