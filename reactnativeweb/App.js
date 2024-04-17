@@ -5,7 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from './Home';
 import LearningPage from './LearningPage';
 import LearningPage2 from './LearningPage2';
-
+import LearningPage3 from './LearningPage3';
 import TestPage from './TestPage';
 import AnswerPage from './Answer';
 import ScorePage from './ScorePage';
@@ -19,7 +19,7 @@ const App = () => {
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="LearningPage" component={LearningPage} options={{ title: 'Sfumato' }} />
         <Stack.Screen name="LearningPage2" component={LearningPage2} options={{ title: 'Chiaroscuro' }} />
-
+        <Stack.Screen name="LearningPage3" component={LearningPage3} options={{ title: 'Perspective' }} />
         <Stack.Screen name="Test" component={TestPage} options={{ title: 'Test' }} />
         <Stack.Screen name="Answer" component={AnswerPage} options={{ title: 'Answer' }} />
         <Stack.Screen name="Score" component={ScorePage} options={{ title: 'Score' }} />

@@ -15,7 +15,7 @@ const Home = ({ navigation }) => {
         <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('LearningPage2')}>
           <Text style={styles.navItemText}>Chiaroscuro</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('Home')}>
+        <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('LearningPage3')}>
           <Text style={styles.navItemText}>Perspective</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('Test')}> {/* Add this block */}
@@ -34,7 +34,9 @@ const Home = ({ navigation }) => {
         <TouchableOpacity
         style={styles.button}
         onPress={() => navigation.navigate('LearningPage2')}><Text style={styles.buttonText}>Chiaroscuro</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.button}><Text style={styles.buttonText}>Perspective</Text></TouchableOpacity>
+        <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate('LearningPage3')}><Text style={styles.buttonText}>Perspective</Text></TouchableOpacity>
       </View>
     </View>
   );

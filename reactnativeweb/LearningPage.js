@@ -214,13 +214,13 @@ const styles = StyleSheet.create({
         elevation: 2,
     },
     detailImage: {
-        width: 200, // Set the width as needed
-        height: 100, // Set the height as needed
+        width: '100%',
+        height: 400, // Set the height as needed
         resizeMode: 'contain', // Adjust the resize mode as needed
-        marginBottom: 20,
+        marginBottom: 0,
       },
       detailDescription: {
-        textAlign: 'center',
+        textAlign: 'left',
         fontSize: 16,
         marginBottom: 20,
       },

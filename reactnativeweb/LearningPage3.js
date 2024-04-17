@@ -1,29 +1,27 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity, ScrollView, Modal } from 'react-native';
 
-const LearningPage2 = ({ navigation, route }) => {
-  console.log("LearningPage2 is now rendering");
+const LearningPage3 = ({ navigation, route }) => {
+  console.log("LearningPage3 is now rendering");
   console.log("Params:", route.params);
   const [modalVisible, setModalVisible] = useState(false);
-  const [imageUri, setImageUri] = useState('https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Leonardo_da_Vinci_%28attrib%29-_la_Belle_Ferroniere.jpg/1200px-Leonardo_da_Vinci_%28attrib%29-_la_Belle_Ferroniere.jpg');
+  const [imageUri, setImageUri] = useState('https://www.leonardodavinci.net/assets/img/works/last-supper.jpg');
   const [content, setContent] = useState({
-    title: "Chiaroscuro in La Belle Ferronniere by Leonardo da Vinci (1490-95)",
+    title: "Exploring Linear Perspective with Leonardo da Vinci",
     details: [
-      "Artistic Interpretation: Da Vinci intentionally painted a broader range of luminance than what is typically perceived in reality.",
-      "Developer: This technique was developed by Leonardo da Vinci."
+      "Technique Rediscovered: During the Renaissance, artists revived the use of linear perspective, a method where parallel lines converge at a single vanishing point. This creates an illusion of depth on a flat canvas.",
     ]
   });
   const [detail, setDetail] = useState({
-    imageUrl: 'https://hips.hearstapps.com/hmg-prod/images/la-belle-ferronniere-leonardo-da-vinci-arte-1665675236.jpg?crop=0.6088888888888889xw:1xh;center,top&resize=640:*', 
-    description: 'By carefully varying the tone from the illuminated parts of her forehead and cheekbones to the deeper shadows under her chin and the folds of her dress, Leonardo creates a compelling sense of volume and presence. '
+    imageUrl: 'https://cenacolovinciano.org/wp-content/uploads/2019/06/Museo-Cenacolo-Vinciano-Una-perfetta-macchina-teatrale-1920x1080.jpg', 
+    description: 'Leonardo placed the vanishing point at Jesus’s right temple, thus drawing the viewer’s attention toward the main subject. Although linear perspective seems like a systemized method of creating the illusion of space, it is complicated by its reliance on a single vantage point. Any viewing position other than the vantage point reveals a slightly distorted painted space. '
   });
   
   const handleContinuePress = () => {
     setContent({
       title: "Technique Highlight",
       details: [
-        "Chiaroscuro: This method involves the use of light and dark shades to create a three-dimensional effect.",
-        "Effect on the Portrait: The subtle transitions between light and shadow across the lady's face demonstrate Leonardo's mastery of chiaroscuro."
+        "Application in His Work: His paintings vividly showcase how he applied linear perspective to craft depth and space, bringing scenes and figures to life with remarkable realism.",
       ]
     });
   };
@@ -211,16 +209,16 @@ const styles = StyleSheet.create({
         elevation: 2,
     },
     detailImage: {
-        width: 200, // Set the width as needed
-        height: 100, // Set the height as needed
+        width: '100%',
+        height: 400, // Set the height as needed
         resizeMode: 'contain', // Adjust the resize mode as needed
-        marginBottom: 20,
+        marginBottom: 0,
       },
       detailDescription: {
-        textAlign: 'center',
+        textAlign: 'left',
         fontSize: 16,
         marginBottom: 20,
       },
 });
 
-export default LearningPage2;
+export default LearningPage3;
