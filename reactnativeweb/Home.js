@@ -9,10 +9,10 @@ const Home = ({ navigation }) => {
         <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('Home')}>
           <Text style={styles.navItemText}>Home</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('Home')}>
+        <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('LearningPage')}>
           <Text style={styles.navItemText}>Sfumato</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('Home')}>
+        <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('LearningPage2')}>
           <Text style={styles.navItemText}>Chiaroscuro</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('Home')}>
@@ -31,7 +31,9 @@ const Home = ({ navigation }) => {
         <TouchableOpacity
         style={styles.button}
         onPress={() => navigation.navigate('LearningPage')}><Text style={styles.buttonText}>Sfumato</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.button}><Text style={styles.buttonText}>Chiaroscuro</Text></TouchableOpacity>
+        <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate('LearningPage2')}><Text style={styles.buttonText}>Chiaroscuro</Text></TouchableOpacity>
         <TouchableOpacity style={styles.button}><Text style={styles.buttonText}>Perspective</Text></TouchableOpacity>
       </View>
     </View>

@@ -1,27 +1,27 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity, ScrollView, Modal } from 'react-native';
 
-const LearningPage = () => {
+const LearningPage2 = () => {
   const [modalVisible, setModalVisible] = useState(false);
-  const [imageUri, setImageUri] = useState('https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/1200px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg');
+  const [imageUri, setImageUri] = useState('https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Leonardo_da_Vinci_%28attrib%29-_la_Belle_Ferroniere.jpg/1200px-Leonardo_da_Vinci_%28attrib%29-_la_Belle_Ferroniere.jpg');
   const [content, setContent] = useState({
-    title: "Sfumato: The Art of Smoke and Mystery",
+    title: "Chiaroscuro in La Belle Ferronniere by Leonardo da Vinci (1490-95)",
     details: [
-      "Origin of the Term: \"Sfumato\" comes from the Italian \"sfumare,\" meaning \"to tone down\" or \"to evaporate like smoke.\"",
-      "Developer: This technique was developed by Leonardo da Vinci, one of the Renaissance's most revered artists."
+      "Artistic Interpretation: Da Vinci intentionally painted a broader range of luminance than what is typically perceived in reality.",
+      "Developer: This technique was developed by Leonardo da Vinci."
     ]
   });
   const [detail, setDetail] = useState({
-    imageUrl: 'https://cdn.mos.cms.futurecdn.net/WSJS6BLFwHqFFoLDB4DJij.jpg', 
-    description: 'Detail of the face of Mona Lisa showing the use of sfumato, particularly in the shading around the eyes.'
+    imageUrl: 'https://hips.hearstapps.com/hmg-prod/images/la-belle-ferronniere-leonardo-da-vinci-arte-1665675236.jpg?crop=0.6088888888888889xw:1xh;center,top&resize=640:*', 
+    description: 'By carefully varying the tone from the illuminated parts of her forehead and cheekbones to the deeper shadows under her chin and the folds of her dress, Leonardo creates a compelling sense of volume and presence. '
   });
   
   const handleContinuePress = () => {
     setContent({
-      title: "Characteristics of Sfumato",
+      title: "Technique Highlight",
       details: [
-        "Subtle Blending: Colors and tones gradually merge without harsh outlines or borders.",
-        "Atmospheric Depth: Achieves a smoky effect, adding a sense of volume and depth to paintings."
+        "Chiaroscuro: This method involves the use of light and dark shades to create a three-dimensional effect.",
+        "Effect on the Portrait: The subtle transitions between light and shadow across the lady's face demonstrate Leonardo's mastery of chiaroscuro."
       ]
     });
   };
@@ -221,4 +221,4 @@ const styles = StyleSheet.create({
       },
 });
 
-export default LearningPage;
+export default LearningPage2;
