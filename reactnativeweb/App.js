@@ -8,6 +8,7 @@ import LearningPage2 from './LearningPage2';
 
 import TestPage from './TestPage';
 import AnswerPage from './Answer';
+import ScorePage from './ScorePage';
 
 const Stack = createNativeStackNavigator();
 
@@ -21,6 +22,7 @@ const App = () => {
 
         <Stack.Screen name="Test" component={TestPage} options={{ title: 'Test' }} />
         <Stack.Screen name="Answer" component={AnswerPage} options={{ title: 'Answer' }} />
+        <Stack.Screen name="Score" component={ScorePage} options={{ title: 'Score' }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

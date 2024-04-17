@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import { View, Text, Image, StyleSheet, Button, ScrollView } from 'react-native';
 
-const AnswerPage = ({ navigation }) => {
+const AnswerPage = ({ route, navigation }) => {
   const [page, setPage] = useState(1);
+
+  const { score } = route.params;
 
   const handleContinue = () => {
     if (page < 3) {
       setPage(page + 1);
     } else {
       // If you're on the last page, navigate back to Home or to any other screen
-      navigation.navigate('Home');
+      navigation.navigate('Score', { score });
     }
   };
 

@@ -4,11 +4,24 @@ import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
 const TestPage = ({navigation}) => {
   const [selectedPainting, setSelectedPainting] = useState(null);
   const [showHint, setShowHint] = useState(false);
+  const [hasChosen, setHasChosen] = useState(false);
+  const [score, setScore] = useState(0);
 
   const correctPainting = 'painting1'; // Identifier for the correct painting
   
   const handleSelectPainting = (painting) => {
-    setSelectedPainting(painting);
+    if (!hasChosen) {
+      setSelectedPainting(painting);
+      setHasChosen(true); // The user has now made their choice
+
+      // If it's the correct painting, award points
+      if (painting === correctPainting) {
+        setScore(1); // Assuming each correct answer is worth 1 point
+      }
+    }
+    else {
+      setSelectedPainting(painting);
+    }
   };
 
   const handleShowHint = () => {
@@ -48,7 +61,7 @@ const TestPage = ({navigation}) => {
       </View>
 
       {isCorrectAnswerSelected && (
-        <TouchableOpacity style={styles.answerButton} onPress={() => navigation.navigate('Answer')}>
+        <TouchableOpacity style={styles.answerButton} onPress={() => navigation.navigate('Answer', {score})}>
           <Text style={styles.answerButtonText}>Answer</Text>
         </TouchableOpacity>
       )}
