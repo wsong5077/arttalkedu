@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import { Modal, View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-const TestPage = ({navigation3, route }) => {
-  const navigation = useNavigation();  // Get the navigation prop using the hook
-
+const TestPage3 = ({navigation2}) => {
   const [selectedPainting, setSelectedPainting] = useState(null);
   const [showHint, setShowHint] = useState(false);
   const [hasChosen, setHasChosen] = useState(false);
@@ -16,10 +14,6 @@ const TestPage = ({navigation3, route }) => {
 
 
   const correctPainting = 'painting1'; // Identifier for the correct painting
-
-  const handleNextPress = () => {
-    navigation.navigate('TestPage2');
-  };
   
   const handleSelectPainting = (painting) => {
     if (!hasChosen) {
@@ -248,7 +242,7 @@ const TestPage = ({navigation3, route }) => {
                 </View>
               </Modal>
             )}
-           <TouchableOpacity style={styles.nextSectionButton} onPress={handleNextPress}>
+           <TouchableOpacity style={styles.nextSectionButton}>
               <Text>Next Question</Text>
             </TouchableOpacity>
           </View>
@@ -436,5 +430,5 @@ const styles = StyleSheet.create({
 },
 });
 
-export default TestPage;
+export default TestPage3;
 

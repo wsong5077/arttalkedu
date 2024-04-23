@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Modal, View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-const TestPage = ({navigation3, route }) => {
-  const navigation = useNavigation();  // Get the navigation prop using the hook
+const TestPage2 = ({  navigation }) => {
+  const navigation2 = useNavigation();  // Get the navigation prop using the hook
 
   const [selectedPainting, setSelectedPainting] = useState(null);
   const [showHint, setShowHint] = useState(false);
@@ -15,10 +15,9 @@ const TestPage = ({navigation3, route }) => {
   const [showAlert, setShowAlert] = useState(false); // State to show alert if no answer is selected
 
 
-  const correctPainting = 'painting1'; // Identifier for the correct painting
-
+  const correctPainting = 'painting2'; // Identifier for the correct painting
   const handleNextPress = () => {
-    navigation.navigate('TestPage2');
+    navigation2.navigate('TestPage3');
   };
   
   const handleSelectPainting = (painting) => {
@@ -80,16 +79,16 @@ const TestPage = ({navigation3, route }) => {
 
   const pageContent = [
     {
-      text: "By using this smoky, blurry effect around the edges of forms, such as around the Virgin’s temples and nose, rather than stark outline, the figures appear to emerge subtly from the darkness.",
-      imageUri: 'https://uploads2.wikiart.org/00339/images/leonardo-da-vinci/virgin-of-the-rocks-between-1483-and-1486.jpg!Large.jpg', // replace with your actual image URL or require statement
+      text: "This painting showcases a style that is more characteristic of Post-Impressionism, with vibrant colors and a focus on the expressive use of color rather than the play of light and shadow to create depth. The brushstrokes are visible and the colors are applied in a way that doesn't prioritize the dramatic contrasts of chiaroscuro.",
+      imageUri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuV7YthcfATqEtZuszl1OCOPTIhhYW9jXXhSk7qq3h4g&s', // replace with your actual image URL or require statement
     },
     {
-      text: "The style of the portrait, with more direct and less softened lighting, suggests a different approach that could be attributed to a later period or a different artist who did not employ sfumato.",
-      imageUri: 'https://uploads1.wikiart.org/images/rembrandt.jpg!Portrait.jpg', // replace with your actual image URL or require statement
+      text: "Completed around 1489-1490, ‘Lady with an Ermine’ illustrates Leonardo's profound understanding of light and shadow and their capacity to imbue painted figures with a lifelike presence and depth.",
+      imageUri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Leonardo%2C_Die_Dame_mit_dem_Hermelin.JPG/782px-Leonardo%2C_Die_Dame_mit_dem_Hermelin.JPG?20080704150828', 
     },
     {
-      text: "It has a more direct and realistic approach to lighting, from the Dutch Baroque period, by Rembrandt.",
-      imageUri: 'https://uploads6.wikiart.org/00475/images/raphael/1-xvkpn0qm3eiqpzivkggfea.jpg!Large.jpg', // replace with your actual image URL or require statement
+      text: "This image is Birth of Venus by Sandro Botticelli. While there is a use of light to create form, it does not exhibit the dramatic use of light and shadow found in chiaroscuro. Botticelli's work is known for its linear grace and the beauty of its figures, with a softer blending of colors and a more ethereal quality, rather than the bold contrasts of chiaroscuro.",
+      imageUri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/The_Birth_of_Venus_%28Botticelli%29_detail.jpg/1600px-The_Birth_of_Venus_%28Botticelli%29_detail.jpg?20110103215039', 
     },
   ];
 
@@ -112,19 +111,19 @@ const TestPage = ({navigation3, route }) => {
 
       
       <Text style={styles.question}>
-        Which painting contains the technique of Sfumato? (Click on the painting to choose)
+      Which painting contains the technique of Chiaroscuro? (Click on the painting to choose)
       </Text>
 
       <View style={styles.paintingsContainer}>
         {/* Replace with actual images and identifiers */}
         <TouchableOpacity onPress={() => handleSelectPainting('painting1')}>
-          <Image source={{uri: 'https://uploads2.wikiart.org/00339/images/leonardo-da-vinci/virgin-of-the-rocks-between-1483-and-1486.jpg!Large.jpg'}} style={[styles.painting, getBorderStyle('painting1')]} />
+          <Image source={{uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuV7YthcfATqEtZuszl1OCOPTIhhYW9jXXhSk7qq3h4g&s'}} style={[styles.painting, getBorderStyle('painting1')]} />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => handleSelectPainting('painting2')}>
-          <Image source={{uri: 'https://uploads1.wikiart.org/images/rembrandt.jpg!Portrait.jpg'}} style={[styles.painting, getBorderStyle('painting2')]} />
+          <Image source={{uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Leonardo%2C_Die_Dame_mit_dem_Hermelin.JPG/782px-Leonardo%2C_Die_Dame_mit_dem_Hermelin.JPG?20080704150828'}} style={[styles.painting, getBorderStyle('painting2')]} />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => handleSelectPainting('painting3')}>
-          <Image source={{uri: 'https://uploads6.wikiart.org/00475/images/raphael/1-xvkpn0qm3eiqpzivkggfea.jpg!Large.jpg'}} style={[styles.painting, getBorderStyle('painting3')]} />
+          <Image source={{uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/The_Birth_of_Venus_%28Botticelli%29_detail.jpg/1600px-The_Birth_of_Venus_%28Botticelli%29_detail.jpg?20110103215039'}} style={[styles.painting, getBorderStyle('painting3')]} />
         </TouchableOpacity>
       </View>
 
@@ -181,7 +180,7 @@ const TestPage = ({navigation3, route }) => {
                 <View style={styles.centeredView}>
                   <View style={styles.modalView}>
                     <Text style={styles.hintText}>
-                      Sfumato is characterized by soft, subtle transitions between colors, without harsh lines.
+                    Chiaroscuro involves the use of strong contrasts between light and dark to give the illusion of volume in modeling three-dimensional objects and figures. 
                     </Text>
                     <TouchableOpacity
                       style={styles.button}
@@ -300,9 +299,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     backgroundColor: '#4CAF50', // Beautiful green as accent color
   },
-  hintBox: {
-    // Styling for the hint text box
-  },
+  
   hintText: {
     fontSize: 24,
     color: 'grey',
@@ -436,5 +433,5 @@ const styles = StyleSheet.create({
 },
 });
 
-export default TestPage;
+export default TestPage2;
 

@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity, ScrollView, Modal } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-const LearningPage3 = ({ navigation, route }) => {
+const LearningPage3 = ({ navigation2, route }) => {
+  const navigation3 = useNavigation();  // Get the navigation prop using the hook
   console.log("LearningPage3 is now rendering");
   console.log("Params:", route.params);
   const [modalVisible, setModalVisible] = useState(false);
@@ -24,6 +26,9 @@ const LearningPage3 = ({ navigation, route }) => {
         "Application in His Work: His paintings vividly showcase how he applied linear perspective to craft depth and space, bringing scenes and figures to life with remarkable realism.",
       ]
     });
+  };
+  const handleNextPress = () => {
+    navigation3.navigate('Home');
   };
   
     
@@ -80,7 +85,7 @@ const LearningPage3 = ({ navigation, route }) => {
         </Modal>
 
 
-      <TouchableOpacity style={styles.nextSectionButton}>
+        <TouchableOpacity style={styles.nextSectionButton} onPress={handleNextPress}>
         <Text>Next Section</Text>
       </TouchableOpacity>
     </View>
@@ -91,6 +96,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'row',
+    backgroundColor: '#4CAF50', // Beautiful green as accent color
+
   },
   imageWrapper: {
     width: '50%', // Takes up half the width of the container

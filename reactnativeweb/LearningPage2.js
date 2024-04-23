@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity, ScrollView, Modal } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const LearningPage2 = ({ navigation, route }) => {
+  const navigation2 = useNavigation();  // Get the navigation prop using the hook
   console.log("LearningPage2 is now rendering");
   console.log("Params:", route.params);
   const [modalVisible, setModalVisible] = useState(false);
@@ -26,6 +28,9 @@ const LearningPage2 = ({ navigation, route }) => {
         "Effect on the Portrait: The subtle transitions between light and shadow across the lady's face demonstrate Leonardo's mastery of chiaroscuro."
       ]
     });
+  };
+  const handleNextPress = () => {
+    navigation2.navigate('LearningPage3');
   };
   
     
@@ -82,7 +87,7 @@ const LearningPage2 = ({ navigation, route }) => {
         </Modal>
 
 
-      <TouchableOpacity style={styles.nextSectionButton}>
+        <TouchableOpacity style={styles.nextSectionButton} onPress={handleNextPress}>
         <Text>Next Section</Text>
       </TouchableOpacity>
     </View>
@@ -93,6 +98,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'row',
+    backgroundColor: '#4CAF50', // Beautiful green as accent color
+
   },
   imageWrapper: {
     width: '50%', // Takes up half the width of the container

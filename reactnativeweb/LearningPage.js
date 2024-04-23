@@ -96,6 +96,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'row',
+    backgroundColor: '#4CAF50', // Beautiful green as accent color
+
   },
   imageWrapper: {
     width: '50%', // Takes up half the width of the container
