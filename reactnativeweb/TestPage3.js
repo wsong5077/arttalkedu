@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 import { Modal, View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-const TestPage3 = ({navigation2}) => {
+const TestPage3 = ({route, navigation2}) => {
   const [selectedPainting, setSelectedPainting] = useState(null);
+  const navigation4 = useNavigation();  // Get the navigation prop using the hook
+  const { score: initialScore } = route.params;
+  const [score, setScore] = useState(initialScore);
+
   const [showHint, setShowHint] = useState(false);
   const [hasChosen, setHasChosen] = useState(false);
-  const [score, setScore] = useState(0);
   const [confirming, setConfirming] = useState(false); // State to manage the confirmation step
   const [showAnswer, setShowAnswer] = useState(false);
   const [page, setPage] = useState(1);
@@ -63,28 +66,29 @@ const TestPage3 = ({navigation2}) => {
     }
   };
 
+  const handleNextPress = () => {
+    navigation4.navigate('Score', { score });
+  };
+
   const handleContinue = () => {
     if (page < 3) {
       setPage(page + 1);
     } else {
       setShowAnswer(false);
-      navigation.navigate('Score', { score });
+      navigation4.navigate('Score', { score });
     }
   };
 
   const pageContent = [
     {
-      text: "By using this smoky, blurry effect around the edges of forms, such as around the Virgin’s temples and nose, rather than stark outline, the figures appear to emerge subtly from the darkness.",
-      imageUri: 'https://uploads2.wikiart.org/00339/images/leonardo-da-vinci/virgin-of-the-rocks-between-1483-and-1486.jpg!Large.jpg', // replace with your actual image URL or require statement
+      text: "Leonardo da Vinci demonstrates his mastery of linear perspective through the careful arrangement of architectural elements and the garden setting that leads the viewer's eye towards the central figures of the Virgin Mary and the Angel Gabriel. The use of a vanishing point creates a convincing three-dimensional space, with the lines of the building and the garden paths converging in the background, enhancing the depth and realism of the scene.",
+      imageUri: 'https://www.antoniosiber.org/perspektiva_navjestenja/perspektiva_navjestenja_1.jpg', 
     },
     {
-      text: "The style of the portrait, with more direct and less softened lighting, suggests a different approach that could be attributed to a later period or a different artist who did not employ sfumato.",
-      imageUri: 'https://uploads1.wikiart.org/images/rembrandt.jpg!Portrait.jpg', // replace with your actual image URL or require statement
+      text: "Leonardo da Vinci demonstrates his mastery of linear perspective through the careful arrangement of architectural elements and the garden setting that leads the viewer's eye towards the central figures of the Virgin Mary and the Angel Gabriel. The use of a vanishing point creates a convincing three-dimensional space, with the lines of the building and the garden paths converging in the background, enhancing the depth and realism of the scene.",
+      imageUri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Pieter_Bruegel_the_Elder-_The_Harvesters_-_Google_Art_Project.jpg/1280px-Pieter_Bruegel_the_Elder-_The_Harvesters_-_Google_Art_Project.jpg', 
     },
-    {
-      text: "It has a more direct and realistic approach to lighting, from the Dutch Baroque period, by Rembrandt.",
-      imageUri: 'https://uploads6.wikiart.org/00475/images/raphael/1-xvkpn0qm3eiqpzivkggfea.jpg!Large.jpg', // replace with your actual image URL or require statement
-    },
+    
   ];
 
   const getBorderStyle = (painting) => {
@@ -106,20 +110,19 @@ const TestPage3 = ({navigation2}) => {
 
       
       <Text style={styles.question}>
-        Which painting contains the technique of Sfumato? (Click on the painting to choose)
+      Which painting contains the technique of Perspective? (Click on the painting to choose)
+
       </Text>
 
       <View style={styles.paintingsContainer}>
         {/* Replace with actual images and identifiers */}
         <TouchableOpacity onPress={() => handleSelectPainting('painting1')}>
-          <Image source={{uri: 'https://uploads2.wikiart.org/00339/images/leonardo-da-vinci/virgin-of-the-rocks-between-1483-and-1486.jpg!Large.jpg'}} style={[styles.painting, getBorderStyle('painting1')]} />
+          <Image source={{uri: 'https://www.datocms-assets.com/103094/1688661773-1503990086334194-568324.jpg?auto=format%2Ccompress&max-w=800'}} style={[styles.painting, getBorderStyle('painting1')]} />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => handleSelectPainting('painting2')}>
-          <Image source={{uri: 'https://uploads1.wikiart.org/images/rembrandt.jpg!Portrait.jpg'}} style={[styles.painting, getBorderStyle('painting2')]} />
+          <Image source={{uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Pieter_Bruegel_the_Elder-_The_Harvesters_-_Google_Art_Project.jpg/1280px-Pieter_Bruegel_the_Elder-_The_Harvesters_-_Google_Art_Project.jpg'}} style={[styles.painting, getBorderStyle('painting2')]} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => handleSelectPainting('painting3')}>
-          <Image source={{uri: 'https://uploads6.wikiart.org/00475/images/raphael/1-xvkpn0qm3eiqpzivkggfea.jpg!Large.jpg'}} style={[styles.painting, getBorderStyle('painting3')]} />
-        </TouchableOpacity>
+        
       </View>
 
       <View style={styles.actionContainer}>
@@ -175,7 +178,8 @@ const TestPage3 = ({navigation2}) => {
                 <View style={styles.centeredView}>
                   <View style={styles.modalView}>
                     <Text style={styles.hintText}>
-                      Sfumato is characterized by soft, subtle transitions between colors, without harsh lines.
+                    When looking for linear perspective in a painting, search for a spot where all lines seem to meet. 
+
                     </Text>
                     <TouchableOpacity
                       style={styles.button}
@@ -242,8 +246,8 @@ const TestPage3 = ({navigation2}) => {
                 </View>
               </Modal>
             )}
-           <TouchableOpacity style={styles.nextSectionButton}>
-              <Text>Next Question</Text>
+           <TouchableOpacity style={styles.nextSectionButton} onPress={handleNextPress}>
+              <Text>View Your Result</Text>
             </TouchableOpacity>
           </View>
         );
@@ -275,8 +279,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   painting: {
-    width: 300,
-    height: 450,
+    width: 600,
+    height: 400,
     margin: 10,
   },
   correct: {
@@ -294,9 +298,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     backgroundColor: '#4CAF50', // Beautiful green as accent color
   },
-  hintBox: {
-    // Styling for the hint text box
-  },
+ 
   hintText: {
     fontSize: 24,
     color: 'grey',

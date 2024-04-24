@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Modal, View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-const TestPage = ({navigation3, route }) => {
+const TestPage = ({route, navigation3 }) => {
   const navigation = useNavigation();  // Get the navigation prop using the hook
 
   const [selectedPainting, setSelectedPainting] = useState(null);
@@ -18,8 +18,8 @@ const TestPage = ({navigation3, route }) => {
   const correctPainting = 'painting1'; // Identifier for the correct painting
 
   const handleNextPress = () => {
-    navigation.navigate('TestPage2');
-  };
+    navigation.navigate('TestPage2', {  score });
+    };
   
   const handleSelectPainting = (painting) => {
     if (!hasChosen) {
@@ -74,7 +74,6 @@ const TestPage = ({navigation3, route }) => {
       setPage(page + 1);
     } else {
       setShowAnswer(false);
-      navigation.navigate('Score', { score });
     }
   };
 

@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { Modal, View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-const TestPage2 = ({  navigation }) => {
+const TestPage2 = ({  route, navigation }) => {
   const navigation2 = useNavigation();  // Get the navigation prop using the hook
+  const { score: initialScore } = route.params;
+  const [score, setScore] = useState(initialScore);
 
   const [selectedPainting, setSelectedPainting] = useState(null);
   const [showHint, setShowHint] = useState(false);
   const [hasChosen, setHasChosen] = useState(false);
-  const [score, setScore] = useState(0);
   const [confirming, setConfirming] = useState(false); // State to manage the confirmation step
   const [showAnswer, setShowAnswer] = useState(false);
   const [page, setPage] = useState(1);
@@ -17,7 +18,8 @@ const TestPage2 = ({  navigation }) => {
 
   const correctPainting = 'painting2'; // Identifier for the correct painting
   const handleNextPress = () => {
-    navigation2.navigate('TestPage3');
+    navigation2.navigate('TestPage3', { navigation2, score });
+
   };
   
   const handleSelectPainting = (painting) => {
@@ -73,7 +75,6 @@ const TestPage2 = ({  navigation }) => {
       setPage(page + 1);
     } else {
       setShowAnswer(false);
-      navigation.navigate('Score', { score });
     }
   };
 
@@ -83,7 +84,7 @@ const TestPage2 = ({  navigation }) => {
       imageUri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuV7YthcfATqEtZuszl1OCOPTIhhYW9jXXhSk7qq3h4g&s', // replace with your actual image URL or require statement
     },
     {
-      text: "Completed around 1489-1490, ‘Lady with an Ermine’ illustrates Leonardo's profound understanding of light and shadow and their capacity to imbue painted figures with a lifelike presence and depth.",
+      text: "Completed around 1489-1490, Lady with an Ermine illustrates Leonardo's profound understanding of light and shadow and their capacity to imbue painted figures with a lifelike presence and depth.",
       imageUri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Leonardo%2C_Die_Dame_mit_dem_Hermelin.JPG/782px-Leonardo%2C_Die_Dame_mit_dem_Hermelin.JPG?20080704150828', 
     },
     {
@@ -101,7 +102,6 @@ const TestPage2 = ({  navigation }) => {
     }
   };
 
-  const isCorrectAnswerSelected = selectedPainting === correctPainting;
 
   return (
     <View style={styles.container}>
