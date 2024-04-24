@@ -85,7 +85,7 @@ const TestPage3 = ({route, navigation2}) => {
       imageUri: 'https://www.antoniosiber.org/perspektiva_navjestenja/perspektiva_navjestenja_1.jpg', 
     },
     {
-      text: "Leonardo da Vinci demonstrates his mastery of linear perspective through the careful arrangement of architectural elements and the garden setting that leads the viewer's eye towards the central figures of the Virgin Mary and the Angel Gabriel. The use of a vanishing point creates a convincing three-dimensional space, with the lines of the building and the garden paths converging in the background, enhancing the depth and realism of the scene.",
+      text: "The Harvesters represents depth and space through size scaling and aerial perspective rather than the mathematical precision of linear perspective used in the left painting.",
       imageUri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Pieter_Bruegel_the_Elder-_The_Harvesters_-_Google_Art_Project.jpg/1280px-Pieter_Bruegel_the_Elder-_The_Harvesters_-_Google_Art_Project.jpg', 
     },
     
