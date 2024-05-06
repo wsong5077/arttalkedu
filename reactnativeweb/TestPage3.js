@@ -100,7 +100,6 @@ const TestPage3 = ({route, navigation2}) => {
     }
   };
 
-  const isCorrectAnswerSelected = selectedPainting === correctPainting;
 
   return (
     <View style={styles.container}>
